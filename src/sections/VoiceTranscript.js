@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "../assets/icons";
+import { Parallax, ParallaxLayer } from "react-spring/renderprops-addons";
 
 export const projects = {
 	NEWS_APP: "newsApp",
@@ -35,18 +36,24 @@ export class Projects extends Component {
 
 		return (
 			<div className="main-con proj-con">
-				<h2 className="proj-title">{title}</h2>
-				<div className="proj-desc-con">
-					<p className="proj-desc">{desc}</p>
-					<a
-						className="proj-link"
-						rel="noopener noreferrer"
-						target="_blank"
-						href={url}>
-						Github
-						<Link style={"width: 50rem"} />
-					</a>
-				</div>
+				<ParallaxLayer
+					offset={this.props.project === projects.NEWS_APP ? 1 : 2}
+					speed={
+						this.props.project === projects.NEWS_APP ? 0.5 : 0.8
+					}>
+					<h2 className="proj-title">{title}</h2>
+					<div className="proj-desc-con">
+						<p className="proj-desc">{desc}</p>
+						<a
+							className="proj-link"
+							rel="noopener noreferrer"
+							target="_blank"
+							href={url}>
+							Github
+							<Link style={"width: 50rem"} />
+						</a>
+					</div>
+				</ParallaxLayer>
 			</div>
 		);
 	}

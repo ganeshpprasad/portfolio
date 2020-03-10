@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Parallax, ParallaxLayer } from "react-spring/renderprops-addons";
 
 export class Tech extends Component {
 	getTechObjects() {
@@ -36,6 +37,12 @@ export class Tech extends Component {
 	}
 
 	render() {
-		return <div className={"main-con"}>{this.getTechObjects()}</div>;
+		return (
+			<div className={"main-con tech-con"}>
+				<ParallaxLayer offset={0.5} speed={0.8}>
+					{this.getTechObjects()}
+				</ParallaxLayer>
+			</div>
+		);
 	}
 }
