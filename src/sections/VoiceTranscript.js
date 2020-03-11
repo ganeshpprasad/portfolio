@@ -28,19 +28,28 @@ export class Projects extends Component {
 	}
 
 	render() {
-		let desc, title, url, offset, techstack, sub, when, info;
+		let desc, title, url, offset, techstack, sub, when, info, appUrl;
 
 		switch (this.props.project) {
 			case projects.NEWS_APP:
 				info = `PROJECTS`;
+				appUrl = `https://news-app-gp.herokuapp.com/`;
 				url = `https://github.com/ganeshpprasad/newsapp`;
 				title = `See all the news`;
 				desc = [
-					`A simple nextjs app which fetches news data from NewsAPI.
-			The app has a simple data handling.`
+					`A nextjs app which fetches news data from NewsAPI.
+			The app is meant to be one stop for different news publications.
+			`,
+					`You can search and filter the news.`
 				];
 				offset = 1.3;
-				techstack = [techs.R, techs.Next, techs.Hooks, techs.Heroku];
+				techstack = [
+					techs.TP,
+					techs.R,
+					techs.Next,
+					techs.Hooks,
+					techs.Heroku
+				];
 				break;
 			case projects.VOICE_REC:
 				info = `PROJECTS`;
@@ -53,7 +62,14 @@ export class Projects extends Component {
 						recorded for written records.{" "}`
 				];
 				offset = 2;
-				techstack = [techs.Heroku];
+				techstack = [
+					techs.RN,
+					techs.Redux,
+					techs.Bitrise,
+					techs.Node,
+					techs.Docker,
+					techs.Heroku
+				];
 				break;
 			default:
 				info = `WORK EXPERIENCE`;
@@ -89,6 +105,7 @@ export class Projects extends Component {
 					offset={offset}
 					speed={0.5}>
 					<div className="proj-sec">
+						<div className="secondary info">{info}</div>
 						<h2 className="primary proj-title">{title}</h2>
 						<h4 className="secondary">{sub}</h4>
 						{when ? (
@@ -103,14 +120,26 @@ export class Projects extends Component {
 								</p>
 							);
 						})}
-						<a
-							className="proj-link"
-							rel="noopener noreferrer"
-							target="_blank"
-							href={url}>
-							Github
-							<Link style={"width: 50rem"} />
-						</a>
+						{url ? (
+							<a
+								className="proj-link"
+								rel="noopener noreferrer"
+								target="_blank"
+								href={url}>
+								Github
+								<Link style={"width: 50rem"} />
+							</a>
+						) : null}
+						{appUrl ? (
+							<a
+								className="proj-link"
+								rel="noopener noreferrer"
+								target="_blank"
+								href={appUrl}>
+								Open App
+								<Link style={"width: 50rem"} />
+							</a>
+						) : null}
 						<div className={"tech-con"}>
 							{techstack.map(item => {
 								return <span className="tech">{item}</span>;
