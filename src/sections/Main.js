@@ -40,7 +40,7 @@ export const Main = () => {
 				))}
 			</div>
 			<div>
-				<ParallaxLayer offset={0} speed={-0.1}>
+				<ParallaxLayer offset={0} speed={1}>
 					<animated.div style={spring}>
 						<MobDev />
 						<WebDev />

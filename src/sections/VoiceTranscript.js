@@ -58,8 +58,8 @@ export class Projects extends Component {
 				desc = [
 					`A voice recorder app which will generate transcripts.
 						You can use this app to record random thoughts you wanna
-						get back to and read them later. Meetings can also be
-						recorded for written records.{" "}`
+						get back to and read them later`,
+					`Meetings can also be recorded for written records.`
 				];
 				offset = 2;
 				techstack = [

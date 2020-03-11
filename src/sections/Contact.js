@@ -5,19 +5,29 @@ export class Contact extends Component {
 	render() {
 		return (
 			<div className="main-con">
-				<ParallaxLayer offset={2.9} speed={0.5}>
-					<h2 className="proj-title">Elsewhere in the internet</h2>
+				<ParallaxLayer offset={2.9} speed={0.4}>
+					<h2 className="primary proj-title">
+						Elsewhere in the internet
+					</h2>
 					<div className="connect-list">
-						<a className="connect-item" href="">
+						<a
+							className="connect-item"
+							href="https://medium.com/@ganeshpprasad">
 							Medium
 						</a>
-						<a className="connect-item" href="">
+						<a
+							className="connect-item"
+							href="https://twitter.com/ganeshpprasad">
 							Twitter
 						</a>
-						<a className="connect-item" href="">
+						<a
+							className="connect-item"
+							href="www.linkedin.com/in/ganeshprasadp">
 							LinkedIn
 						</a>
-						<a className="connect-item" href="">
+						<a
+							className="connect-item"
+							href="https://github.com/ganeshpprasad/">
 							Github
 						</a>
 					</div>
