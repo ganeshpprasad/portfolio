@@ -3,13 +3,7 @@ import { useTrail, animated } from "react-spring";
 import { DEV1, DEV2 } from "../assets/icons";
 
 const config = { mass: 5, tension: 2000, friction: 200 };
-const items = [
-	"I'm a web and mobile app developer for 2+ years. I have",
-	"developed professional grade apps. I'm passionate about User",
-	"Experience and implement strong usability techniques to all the",
-	"products I built."
-];
-
+const items = ["I build mobile and web apps", "React Native", "React"];
 export const Main = () => {
 	// const props = useSpring({ opacity: 1, from: { opacity: 0 } });
 
@@ -23,13 +17,13 @@ export const Main = () => {
 
 	return (
 		<div className={"main-con"}>
-			<h2 className={"name"}>Hello</h2>
-			<h2 className={"name"}>I'm Ganesh Prasad P</h2>
-			<p className={"desc"}>
+			<h2 className={"salut"}>Hello!</h2>
+			<h2 className={"primary"}>I'm Ganesh Prasad P</h2>
+			<div>
 				{trail.map(({ x, height, ...rest }, index) => (
 					<animated.div
+						className={index > 0 ? "secondary" : "secondary-black"}
 						key={items[index]}
-						className="trails-text"
 						style={{
 							...rest,
 							transform: x.interpolate(
@@ -41,7 +35,7 @@ export const Main = () => {
 						</animated.div>
 					</animated.div>
 				))}
-			</p>
+			</div>
 		</div>
 	);
 };

@@ -9,9 +9,10 @@ function App() {
 		<div className="App">
 			<Parallax pages={4} scrolling={true} ref={ref => (parallax = ref)}>
 				<Main />
-				<Tech />
+				<Projects />
 				<Projects project={projects.VOICE_REC} />
 				<Projects project={projects.NEWS_APP} />
+
 				<Contact />
 			</Parallax>
 		</div>
