@@ -1,6 +1,7 @@
 import React from "react";
-import { useTrail, animated } from "react-spring";
-import { DEV1, DEV2 } from "../assets/icons";
+import { useTrail, animated, useSpring } from "react-spring";
+import { DEV1, DEV2, MobDev, WebDev } from "../assets/icons";
+import { ParallaxLayer } from "react-spring/renderprops-addons";
 
 const config = { mass: 5, tension: 2000, friction: 200 };
 const items = ["I build mobile and web apps", "React Native", "React"];
@@ -14,6 +15,8 @@ export const Main = () => {
 		height: 60,
 		from: { opacity: 0, x: 20, height: 0 }
 	});
+
+	const spring = useSpring({ from: { opacity: 0 }, to: { opacity: 1 } });
 
 	return (
 		<div className={"main-con"}>
@@ -35,6 +38,14 @@ export const Main = () => {
 						</animated.div>
 					</animated.div>
 				))}
+			</div>
+			<div>
+				<ParallaxLayer offset={0} speed={-0.1}>
+					<animated.div style={spring}>
+						<MobDev />
+						<WebDev />
+					</animated.div>
+				</ParallaxLayer>
 			</div>
 		</div>
 	);

@@ -28,20 +28,22 @@ export class Projects extends Component {
 	}
 
 	render() {
-		let desc, title, url, offset, techstack, sub, when;
+		let desc, title, url, offset, techstack, sub, when, info;
 
 		switch (this.props.project) {
 			case projects.NEWS_APP:
+				info = `PROJECTS`;
 				url = `https://github.com/ganeshpprasad/newsapp`;
 				title = `See all the news`;
 				desc = [
 					`A simple nextjs app which fetches news data from NewsAPI.
 			The app has a simple data handling.`
 				];
-				offset = 1;
+				offset = 1.3;
 				techstack = [techs.R, techs.Next, techs.Hooks, techs.Heroku];
 				break;
 			case projects.VOICE_REC:
+				info = `PROJECTS`;
 				url = `https://github.com/ganeshpprasad/journalRecorder`;
 				title = `Record your Thoughts in words`;
 				desc = [
@@ -54,6 +56,7 @@ export class Projects extends Component {
 				techstack = [techs.Heroku];
 				break;
 			default:
+				info = `WORK EXPERIENCE`;
 				title = `Hiver`;
 				sub = ` Front End and React Native Developer`;
 				desc = [
@@ -84,9 +87,7 @@ export class Projects extends Component {
 				<ParallaxLayer
 					style={{ display: "flex" }}
 					offset={offset}
-					speed={
-						this.props.project === projects.NEWS_APP ? 0.5 : 0.8
-					}>
+					speed={0.5}>
 					<div className="proj-sec">
 						<h2 className="primary proj-title">{title}</h2>
 						<h4 className="secondary">{sub}</h4>
