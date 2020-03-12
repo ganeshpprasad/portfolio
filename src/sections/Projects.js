@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "../assets/icons";
-import { Parallax, ParallaxLayer } from "react-spring/renderprops-addons";
+import { ParallaxLayer } from "react-spring/renderprops-addons";
 
 export const projects = {
 	NEWS_APP: "newsApp",
@@ -23,12 +23,24 @@ export const techs = {
 };
 
 export class Projects extends Component {
-	constructor(props) {
-		super(props);
-	}
-
-	render() {
-		let desc, title, url, offset, techstack, sub, when, info, appUrl;
+	getResponsiveClassName() {
+		let class_name;
+		let desc,
+			title,
+			url,
+			offset,
+			techstack,
+			sub,
+			speed = 0.5,
+			when,
+			info,
+			appUrl;
+		const { isMobile } = this.props;
+		if (isMobile) {
+			class_name = "proj-mobile-con";
+		} else {
+			class_name = "proj-con";
+		}
 
 		switch (this.props.project) {
 			case projects.NEWS_APP:
@@ -42,7 +54,8 @@ export class Projects extends Component {
 			`,
 					`You can search and filter the news.`
 				];
-				offset = 1.3;
+				offset = isMobile ? 1 : 1.3;
+				speed = isMobile ? 0.9 : 0.6;
 				techstack = [
 					techs.TP,
 					techs.R,
@@ -61,7 +74,7 @@ export class Projects extends Component {
 						get back to and read them later`,
 					`Meetings can also be recorded for written records.`
 				];
-				offset = 2;
+				offset = isMobile ? 1.5 : 2;
 				techstack = [
 					techs.RN,
 					techs.Redux,
@@ -82,7 +95,7 @@ export class Projects extends Component {
 					`I got to build Hiver Analytics using chartjs`,
 					`I built react-native app and setup CI/CD`
 				];
-				offset = 0.6;
+				offset = isMobile ? 0.5 : 0.6;
 				when = "April 2017 - Dec 2019";
 				techstack = [
 					techs.Back,
@@ -98,19 +111,47 @@ export class Projects extends Component {
 				break;
 		}
 
+		return {
+			desc,
+			title,
+			url,
+			offset,
+			techstack,
+			sub,
+			when,
+			info,
+			appUrl,
+			class_name,
+			speed
+		};
+	}
+
+	render() {
+		const {
+			desc,
+			title,
+			url,
+			offset,
+			techstack,
+			sub,
+			when,
+			info,
+			appUrl,
+			class_name,
+			speed
+		} = this.getResponsiveClassName();
+
 		return (
-			<div className="proj-con">
+			<div className={class_name}>
 				<ParallaxLayer
 					style={{ display: "flex" }}
 					offset={offset}
-					speed={0.5}>
+					speed={speed}>
 					<div className="proj-sec">
 						<div className="secondary info">{info}</div>
 						<h2 className="primary proj-title">{title}</h2>
 						<h4 className="secondary">{sub}</h4>
-						{when ? (
-							<h4 className="secondary-black">{when}</h4>
-						) : null}
+						{when && <h4 className="secondary-black">{when}</h4>}
 					</div>
 					<div className="proj-desc-con">
 						{desc.map(text => {
@@ -120,7 +161,7 @@ export class Projects extends Component {
 								</p>
 							);
 						})}
-						{url ? (
+						{url && (
 							<a
 								className="proj-link"
 								rel="noopener noreferrer"
@@ -129,8 +170,8 @@ export class Projects extends Component {
 								Github
 								<Link style={"width: 50rem"} />
 							</a>
-						) : null}
-						{appUrl ? (
+						)}
+						{appUrl && (
 							<a
 								className="proj-link"
 								rel="noopener noreferrer"
@@ -139,7 +180,7 @@ export class Projects extends Component {
 								Open App
 								<Link style={"width: 50rem"} />
 							</a>
-						) : null}
+						)}
 						<div className={"tech-con"}>
 							{techstack.map(item => {
 								return <span className="tech">{item}</span>;

@@ -3,9 +3,14 @@ import { Parallax, ParallaxLayer } from "react-spring/renderprops-addons";
 
 export class Contact extends Component {
 	render() {
+		const { isMobile } = this.props;
+
 		return (
-			<div className="main-con">
-				<ParallaxLayer offset={2.9} speed={0.4}>
+			<div
+				className={
+					isMobile ? "connect-mobile-con main-con" : "main-con"
+				}>
+				<ParallaxLayer offset={isMobile ? 1.9 : 2.9} speed={0.1}>
 					<h2 className="primary proj-title">
 						Elsewhere in the internet
 					</h2>
