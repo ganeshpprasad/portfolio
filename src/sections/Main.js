@@ -5,7 +5,7 @@ import { ParallaxLayer } from "react-spring/renderprops-addons";
 
 const config = { mass: 5, tension: 2000, friction: 200 };
 const items = ["I build mobile and web apps", "React Native", "React"];
-export const Main = () => {
+export const Main = props => {
 	const trail = useTrail(items.length, {
 		config,
 		opacity: 1,
@@ -16,7 +16,7 @@ export const Main = () => {
 
 	const spring = useSpring({ from: { opacity: 0 }, to: { opacity: 1 } });
 
-	const getMobileAndWebsite = () => (
+	const getMobileAndWebsite = isMobile => (
 		<ParallaxLayer offset={0} speed={1}>
 			<animated.div style={spring}>
 				<MobDev />
@@ -38,12 +38,14 @@ export const Main = () => {
 			</animated.div>
 		));
 
+	const { isMobile } = props;
+
 	return (
-		<div className={"main-con"}>
+		<div className={isMobile ? "main-con main-mobile-con" : "main-con"}>
 			<h2 className={"salut"}>Hello!</h2>
 			<h2 className={"primary"}>I'm Ganesh Prasad P</h2>
 			<div>{getDesc()}</div>
-			<div>{getMobileAndWebsite()}</div>
+			<div>{getMobileAndWebsite(isMobile)}</div>
 		</div>
 	);
 };

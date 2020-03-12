@@ -20,7 +20,7 @@ function App() {
 				pages={isMobile ? 3 : 4}
 				scrolling={true}
 				ref={ref => (parallax = ref)}>
-				<Main />
+				<Main isMobile={isMobile} />
 				<Projects isMobile={isMobile} />
 				<Projects isMobile={isMobile} project={projects.VOICE_REC} />
 				<Projects isMobile={isMobile} project={projects.NEWS_APP} />
